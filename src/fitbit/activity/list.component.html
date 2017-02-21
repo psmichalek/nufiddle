@@ -1,0 +1,18 @@
+
+List..
+
+<div class="mb-4" ng-repeat="row in model.activities">
+
+  <div class="card card-inverse card-warning">
+
+    <div class="card-header">
+      <i class="fa fa-plus" style="cursor:pointer" ng-click="model.toggleAnswer(row)"></i> {{row.question}}
+    </div>
+
+    <div class="card-block" ng-show="row.ansOn">
+      {{row.answer}}
+    </div>
+
+  </div>
+
+</div>

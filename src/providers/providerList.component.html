@@ -1,0 +1,18 @@
+
+<div class="mb-4 card card-block" ng-repeat="s in model.sources track by $index" ng-show="s.active">
+  <div class="card-header text-sm-center">
+    <h3 class="card-title">{{s.name}}</h3>
+  </div>
+  <div class="row">
+    <div class="col-sm-6" ng-repeat="context in s.scope" ng-show="context.active">
+      <div class="card">
+        <div class="card-block">
+          <spn class="card-text">
+             {{context.name}}
+          </span>
+          <div ui-view="{{context.route}}" ng-show="context.route!=''"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

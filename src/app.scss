@@ -1,0 +1,125 @@
+
+$spaceamounts: (5, 10, 15, 20, 25, 30);
+$navActiveBorderColor: #1a1aff;
+
+@mixin generate-1px-border($color){
+  border:1px solid $color;
+}
+@mixin nav-item-body(){
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:1px;
+  padding-bottom:1px;
+  cursor: pointer;
+  margin-left:2px;
+  margin-right:2px;
+  display:inline-block;
+}
+
+body,html{
+  margin:0;
+}
+
+body{
+  font-family: "Open Sans";
+  font-size: 1.15rem;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.6;
+}
+.clearfix{ clear: both; }
+.bold{ font-weight:bold; }
+
+.card-text{
+  font-size:0.8rem;
+}
+
+/*
+ * Navigation
+ */
+
+.navbar-fixed-top{
+  background: #282a2e;
+  color: rgba(255,255,255,1);
+  z-index: 99;
+  border-bottom: 2px solid orange;
+  margin-bottom: 10px;
+}
+
+.topnav{
+
+  position:relative;
+  width:100%;
+  font-size:0.8rem;
+
+  .logo{
+    float:left;
+    width:250px;
+    font-size:1.15rem;
+    @include nav-item-body();
+  }
+
+  .menu{
+    position: absolute;
+    top:50%;
+    right:1px;
+    transform: translate(-1px,-50%);
+    display:inline-block;
+  }
+
+  .menu-item{
+    @include nav-item-body();
+  }
+
+  .menu-item:hover{
+    padding-top:0px;
+    padding-bottom:0px;
+    border-radius:3px;
+    border-top:1px solid $navActiveBorderColor;
+    border-bottom:1px solid $navActiveBorderColor;
+    background-color:#000099;
+  }
+
+  .menu-user{
+    cursor: none;
+    font-size:0.5rem;
+    color:#9297a0;
+    @include nav-item-body();
+  }
+
+  .menu-form{
+    @include nav-item-body();
+  }
+
+  button{
+    cursor:pointer;
+    background-color: #b3b3b3;
+  }
+
+}
+/*
+ * Annimations
+ */
+
+.fadein,
+.fadeout {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
+}
+
+.fadein.ng-hide-remove,
+.fadein.not-visible-remove,
+.fadeout.ng-hide-add.ng-hide-add-active,
+.fadeout.not-visible-add.not-visible-add-active,
+.ng-enter {
+  opacity: 0;
+}
+
+.fadeout.ng-hide-add,
+.fadeout.not-visible-add,
+.fadein.ng-hide-remove.ng-hide-remove-active,
+.fadein.not-visible-remove.not-visible-remove-active {
+  opacity: 1;
+}
