@@ -1,0 +1,22 @@
+<div class="mr-2 ml-2" ng-show="model.showContent">
+    <span class="">{{model.title}} <i class="fa fa-refresh cursor" ng-class="{'fa-spin':model.refreshing}" ng-click="model.getApiSources()"></i></span>
+
+    <div class="mb-4 card card-block" ng-repeat="s in model.sources track by $index">
+      <div class="card-header text-sm-center">
+        <h3 class="card-title">{{s.name}}</h3>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" ng-repeat="context in s.scope" ng-show="context.active">
+          <div class="card">
+            <div class="card-block">
+              <spn class="card-text">
+                 {{context.name}}
+              </span>
+              <div ui-view="{{context.route}}" ng-show="context.route!=''"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>

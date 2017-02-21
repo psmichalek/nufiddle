@@ -38,6 +38,6 @@
     "carousel": true,
     "utilities": true
   },
-  "appStyles":"./src/app.scss",
+  "appStyles":"./src/css/app.scss",
   "scripts": false
 }

@@ -1,14 +1,35 @@
 // Vendor dependancies
 import angular from 'angular';
-//import uirouter from 'angular-ui-router';
-//import nganimate from 'angular-animate';
+import AngularUiRouter from 'angular-ui-router';
+import AngularAnimate from 'angular-animate';
+import LocalStorageModule from 'angular-local-storage';
 
-// Application component dependancies
-//import auth from './auth/auth.module';
-//import home from './home/home.module';
-import navigation from './navigation/navigation.module';
+// Application dependancies
+import AppCore from './core';
+import { AppComponent } from './app.component';
 
-// Set application module
-angular.module('app',[
-'app.navigation',
+angular.module('nufiddle',[
+    AngularUiRouter,
+    AngularAnimate,
+    LocalStorageModule,
+    AppCore
 ])
+.component( AppComponent.selector, AppComponent );
+
+angular.element(document).ready(() => {
+  angular.bootstrap(document, [ 'nufiddle' ]);
+});
+
+
+function AppConfig($stateProvider,$urlServiceProvider,localStorageServiceProvider) {
+
+   localStorageServiceProvider.setPrefix('NuFiddle');
+
+  $urlServiceProvider.rules.otherwise({state:'home'});
+
+  $stateProvider.state('home', {
+    url: '/',
+    component: AppComponent.selector
+  });
+
+}
