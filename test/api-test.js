@@ -1,18 +1,17 @@
 'use strict'
 
-let TT_CLK = 'qNxQcAPI1u2xgWyNoKLYOJWxAmsiEYDP';
-let TT_SEC = 'erklu3CYNazmboqm';
-let CBURL   = 'https://nufiddle.herokuapp.com/oauth2/callback';
-let RSPTYPE = 'code';
-let APIURL = 'https://api.tomtom.com/mysports/oauth2/authorize?Api-Key='+OA_APK+'&client_id='+OA_CLK+'&redirect_uri='+CBURL+'&response_type='+RSPTYPE+'&state=NFC21'
+const request = require('supertest')
+const exp = require('chai').expect;
+const appApiUrl = 'https://askmee.herokuapp.com';
+const appApiOauthPath = '/oauth2/nufiddle/callback';
 
-var request = require('request');
+describe('Connecting to the APIs ', () => {
 
-request(APIURL,function (error, response, body) {
+    it('should respond with status 200 to oAuth service call ', (done) => {
+        request(appApiUrl)
+        .get(appApiOauthPath)
+        .expect(200,done)
+    })
 
-  console.log('url '+APIURL);
-  console.log('error ',error);
-  console.log('response ',response.status);
-  console.log('body ',body);
-
+    // add more..
 })
